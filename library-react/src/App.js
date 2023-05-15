@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Nav from "./components/Nav";
-import Landing from "./components/Landing";
-import Highlights from "./components/Highlights";
-import Featured from "./components/Featured";
-import Discounted from "./components/Discounted";
+import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Books from "./pages/Books";
+import { books } from "./data";
 
 function App() {
   return (
-    <div>
-      <Nav />
-      <Landing />
-      <Highlights />
-      <Featured />
-      <Discounted />
-    </div>
+    <Router>
+      <div className="app">
+        <Nav />
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/books" element={<Books books={books} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
